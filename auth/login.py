@@ -1,4 +1,5 @@
 import streamlit as st
+from services.auth_services import authenticate
 
 
 def show_login():
@@ -34,7 +35,13 @@ def show_login():
 
         if st.button("🔐 Login", use_container_width=True):
 
-            st.success("Login button clicked!")
+             user = authenticate(username, password)
+
+             if user:
+                st.success(f"Welcome {user['full_name']}!")
+
+             else:
+              st.error("Invalid username or password.")
 
     st.divider()
 
