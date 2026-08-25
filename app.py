@@ -15,7 +15,14 @@ if "logged_in" not in st.session_state:
     st.session_state["logged_in"] = False
 
 
+if "page" not in st.session_state:
+    st.session_state["page"] = "dashboard"
+
+
 if st.session_state["logged_in"]:
+
     show_dashboard()
+
 else:
+
     show_login()
